@@ -1,5 +1,5 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME: Karthick Raja K</H3>
+<H3>ENTER YOUR REGISTER NO: 212223240066</H3>
 <H3>EX. NO.1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
@@ -37,11 +37,77 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+data = pd.read_csv("Churn_Modelling.csv")
+data
+data.head()
+
+X=data.iloc[:,:-1].values
+X
+
+y=data.iloc[:,-1].values
+y
+
+data.isnull().sum()
+
+data.duplicated()
+
+data.describe()
+
+data = data.drop(['Surname', 'Geography','Gender'], axis=1)
+data.head()
+
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
+X_train
+
+X_test
+
+print("Lenght of X_test ",len(X_test))
+
+
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### Dataset:
+![Screenshot 2025-05-17 123151](https://github.com/user-attachments/assets/bad46f33-727c-4943-90ec-325012140982)
+
+### X Values:
+![Screenshot 2025-05-17 123405](https://github.com/user-attachments/assets/6b50e755-5eab-4291-8e96-5cdcb922f5f0)
+
+### Y Values:
+![Screenshot 2025-05-17 123521](https://github.com/user-attachments/assets/be075ef5-55fa-4bbc-967f-a7fe346fb8ca)
+
+### Null Values:
+![Screenshot 2025-05-17 123619](https://github.com/user-attachments/assets/7100b755-ec23-4c0e-a955-d7b1e0fe6e97)
+
+### Duplicated Values:
+![Screenshot 2025-05-17 123704](https://github.com/user-attachments/assets/640bcbe0-dce5-4158-b417-063cdb931688)
+
+### Description:
+![Screenshot 2025-05-17 123752](https://github.com/user-attachments/assets/89ac2067-91d8-4cdd-a3a7-4725f7711efb)
+
+### Normalized Dataset:
+![Screenshot 2025-05-17 124038](https://github.com/user-attachments/assets/9dbdc5b8-f9af-43c3-a43e-0cb5d594e91f)
+
+### Training Data:
+![Screenshot 2025-05-17 124547](https://github.com/user-attachments/assets/80eeae26-1f47-4c1d-88ec-a7c82e641757)
+
+
+### Testing Data:
+![Screenshot 2025-05-17 124614](https://github.com/user-attachments/assets/7311db74-8e80-4957-80e1-7c6a797a30b0)
+
 
 
 ## RESULT:
